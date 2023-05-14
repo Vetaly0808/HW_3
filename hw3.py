@@ -21,10 +21,14 @@ def get_birthdays_per_week(users):
 
     for user in users:
         user_birthday = user['birthday'].replace(year=next_monday.year)
-        if user_birthday < next_monday:
+        if user_birthday.weekday() >= 5:  
+            user_birthday = next_monday  
+        elif user_birthday < next_monday:
             user_birthday = user_birthday.replace(year=next_monday.year + 1)
         weekdays[user_birthday.strftime('%A')].append(user['name'])
 
     for day, users in weekdays.items():
         print(f"{day}: {', '.join(users)}")
+
+
 get_birthdays_per_week(users)
