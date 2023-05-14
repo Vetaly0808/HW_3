@@ -27,3 +27,4 @@ def get_birthdays_per_week(users):
 
     for day, users in weekdays.items():
         print(f"{day}: {', '.join(users)}")
+get_birthdays_per_week(users)
